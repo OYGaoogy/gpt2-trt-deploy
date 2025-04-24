@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>GPT-2 Go 接口</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h2>通过 Golang 调用 GPT-2</h2>
+<h2>（由 Flask + TensorRT 提供服务）</h2>
+<textarea id="prompt" rows="4" placeholder="请输入你的问题..."></textarea>
+<button onclick="sendPrompt()">发送</button>
+<div id="response"></div>
+
+<script>
+    async function sendPrompt() {
+        const prompt = document.getElementById("prompt").value;
+        const responseDiv = document.getElementById("response");
+        responseDiv.innerText = "生成中...";
+        const res = await fetch("/infer", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt })
+        });
+        const data = await res.json();
+        responseDiv.innerText = data.response;
+    }
+</script>
+</body>
+</html>

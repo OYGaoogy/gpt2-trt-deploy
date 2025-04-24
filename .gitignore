@@ -1,0 +1,56 @@
+# === Python 文件 ===
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.log
+
+# === 模型权重/输出 ===
+*.bin
+*.safetensors
+*.onnx
+*.plan
+*.engine
+*.pth
+*.pt
+*.ckpt
+
+# === 训练输出目录（仅保留结构） ===
+gpt2_finetune/*
+!gpt2_finetune/config.json
+!gpt2_finetune/tokenizer_config.json
+!gpt2_finetune/special_tokens_map.json
+!gpt2_finetune/vocab.json
+!gpt2_finetune/merges.txt
+
+# === Docker 镜像包（提前下载的）===
+docker_mirror_resources/
+*.tar
+
+# === 虚拟环境 ===
+venv/
+env/
+.venv/
+ENV/
+
+# === IDE 缓存（PyCharm） ===
+.idea/
+.vscode/
+
+# === 数据集缓存 ===
+*.zip
+*.gz
+*.tar
+*.tar.gz
+
+# === notebook checkpoint ===
+.ipynb_checkpoints
+
+# === 其他临时文件 ===
+*.swp
+.DS_Store
+Thumbs.db
+
+# === token 文件或秘钥（如有）===
+*.env
+*.token
