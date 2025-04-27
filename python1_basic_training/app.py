@@ -1,3 +1,7 @@
+# copied from: python1_basic_training/transformers3_DeploymentFlask.py
+# modified for: docker deployment
+# date: 2025-04-27
+
 from flask import Flask, request, jsonify, render_template
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 import torch

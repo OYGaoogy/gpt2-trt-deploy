@@ -1,0 +1,20 @@
+FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
+
+# 设置工作目录
+WORKDIR /app
+
+# 先复制 requirements 并安装（利用缓存机制加速）
+COPY requirements_v1_backend.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 复制应用代码和模型文件
+COPY python1_basic_training/app.py .
+COPY python1_basic_training/templates ./templates
+COPY python1_basic_training/static ./static
+COPY gpt2_finetune ./gpt2_finetune
+
+# 暴露端口（注意Flask默认端口是5000）
+EXPOSE 5000
+
+# 启动Flask服务
+CMD ["python3", "app.py"]

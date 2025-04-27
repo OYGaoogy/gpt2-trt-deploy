@@ -3,6 +3,19 @@ import torch
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+'''
+文件 / 文件夹 | 类型 | 作用
+model.safetensors | 权重文件 | ✅ 模型的全部参数（就是原生模型）
+config.json | 配置文件 | 模型结构配置（层数、头数、隐藏层等）
+generation_config.json | 推理设置 | 生成时用的参数（如top_k, temperature）
+merges.txt | 分词器词缀合并表 | BPE分词用，合并规则
+vocab.json | 分词器词表 | token和词之间的映射
+tokenizer_config.json | 分词器配置 | 分词器使用规则（如是否lowercase）
+special_tokens_map.json | 特殊token配置 | 比如 [PAD]、[EOS] 这些映射
+checkpoint-9180/ | 训练中间保存 | 第9180步的中间模型（自动保存）
+checkpoint-18359/ | 训练中间保存 | 第18359步的中间模型
+'''
+
 # 初始化 tokenizer 和 model
 # model.train() 用于训练阶段，会更新权重，模型默认值
 # model.eval() 用于验证/推理，不会更新权重

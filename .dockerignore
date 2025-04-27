@@ -1,27 +1,48 @@
-# 忽略 Python 缓存
+# === Python 编译缓存文件 ===
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# 忽略临时文件
+# === 临时编辑器文件 ===
 *.swp
+*.swo
 *.bak
 *.tmp
 *.log
 
-# 忽略 Jupyter 文件
+# === Jupyter Notebook文件 ===
 *.ipynb
 .ipynb_checkpoints/
 
-# 忽略训练 checkpoint
+# === 训练中间 checkpoint 文件（只保留最终模型）===
 gpt2_finetune/checkpoint-*/
 
-# 忽略无关脚本（只打包 app.py）
+# === 测试/开发脚本，不打包进生产镜像 ===
+testENV.py
+test/
+
+# === 训练阶段用的脚本（部署时不需要）===
 transformers1_*.py
 transformers2_*.py
-testENV.py
 
-# 忽略虚拟环境（如果有）
+# === IDE相关文件夹（PyCharm、VSCode等）===
+.idea/
+.vscode/
+
+# === 虚拟环境（如果有的话）===
 env/
 venv/
+
+# === Go语言项目本地缓存（如果有的话）===
+go_api/.idea/
+go_api/go.sum
+
+# === 镜像打包缓存（如果以后涉及build wheel）===
+*.whl
+*.egg-info/
+build/
+dist/
+
+# === 只打包核心入口文件和必需目录 ===
+# (app.py / app.go / static/ / templates/ / gpt2_finetune/ / model/ 保留)

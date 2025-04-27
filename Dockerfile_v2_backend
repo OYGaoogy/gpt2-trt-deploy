@@ -1,0 +1,20 @@
+FROM nvcr.io/nvidia/pytorch:22.12-py3
+
+# 设置工作目录
+WORKDIR /app
+
+# 复制 requirements 并安装
+COPY requirements_v2_backend.txt ./requirements.txt
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 复制推理服务相关代码和模型
+COPY python2_onnx_tensorrt_infer /app/python2_onnx_tensorrt_infer
+COPY gpt2_finetune /app/gpt2_finetune
+COPY model /app/model
+
+# 暴露端口（推理API使用）
+EXPOSE 6006
+
+# 启动 Flask API服务
+CMD ["python3", "python2_onnx_tensorrt_infer/app.py"]

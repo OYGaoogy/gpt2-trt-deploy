@@ -1,56 +1,51 @@
-# === Python 文件 ===
+# === Python缓存文件 ===
 __pycache__/
-*.py[cod]
-*.so
+*.pyc
+*.pyo
 *.pyd
-*.log
 
-# === 模型权重/输出 ===
-*.bin
-*.safetensors
-*.onnx
-*.plan
-*.engine
-*.pth
-*.pt
-*.ckpt
-
-# === 训练输出目录（仅保留结构） ===
-gpt2_finetune/*
-!gpt2_finetune/config.json
-!gpt2_finetune/tokenizer_config.json
-!gpt2_finetune/special_tokens_map.json
-!gpt2_finetune/vocab.json
-!gpt2_finetune/merges.txt
-
-# === Docker 镜像包（提前下载的）===
-docker_mirror_resources/
-*.tar
-
-# === 虚拟环境 ===
-venv/
+# === Python虚拟环境 ===
 env/
-.venv/
-ENV/
+venv/
 
-# === IDE 缓存（PyCharm） ===
-.idea/
+# === VSCode / PyCharm IDE配置文件 ===
 .vscode/
+.idea/
 
-# === 数据集缓存 ===
-*.zip
-*.gz
-*.tar
-*.tar.gz
+# === Python打包产物（如果以后build wheel等） ===
+*.egg-info/
+build/
+dist/
+*.whl
 
-# === notebook checkpoint ===
-.ipynb_checkpoints
-
-# === 其他临时文件 ===
+# === 日志文件、临时文件 ===
+*.log
+*.tmp
 *.swp
+*.swo
+*.bak
+
+# === Jupyter文件（如果以后写.ipynb实验文件） ===
+*.ipynb
+.ipynb_checkpoints/
+
+# === Checkpoints（训练中间模型，避免无意义提交） ===
+gpt2_finetune/checkpoint-*/
+
+# === 测试文件夹/脚本（本地测试用，不提交） ===
+test/
+testENV.py
+
+# === ONNX模型（大文件，看是否需要特别管理） ===
+model/*.onnx
+
+# === Docker相关镜像大文件（如果未来有离线镜像文件） ===
+docker_mirror_resources/*.tar
+
+# === Go语言缓存和编译文件 ===
+go_api/.idea/
+go_api/go.sum
+
+# === 其他临时或系统隐藏文件 ===
 .DS_Store
 Thumbs.db
-
-# === token 文件或秘钥（如有）===
-*.env
-*.token
